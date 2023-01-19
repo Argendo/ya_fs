@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товарищ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://fonts.cdnfonts.com/css/futura-medium" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/snowstorm" rel="stylesheet">
+</head>
+<body class="bg-dark text-white text-center">
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container-fluid" style="background-color: brown;">
+          <div class="row">
+            <div class="d-flex flex-wrap justify-content-center mt-3">
+              <h5 class="text-white text-center" style="letter-spacing: 1px; font-family: 'Snowstorm', sans-serif">ВАЖНЕЙШЕЕ УСЛОВИЕ ПРОГРЕССА НАУКИ И ТЕХНИКИ - ПОСТОЯННОЕ СОВЕРШЕНСТВОВАНИЕ СИСТЕМЫ ПОДГОТОВКИ КВАЛИФИЦИРОВАННЫХ КАДРОВ!</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark text-center">
+        <div class="container text-center">
+          <div class="row d-flex flex-wrap align-items-center text-white">
+            <h3 class="text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" style="font-family: 'Snowstorm', sans-serif; letter-spacing: 1px;">Автоматизированный телекоммуникационный комплекс беспроводного обмена данными "Товарищ".</h3>
+          </div>
+          <br>
+        </div>
+      </div>
+    </header>
+
+    <main class="col-10 px-2 align-items-center text-center mx-auto">
+      <h1>Товарищ - в светлое завтра сегодня!</h1>
+      <p class="lead">Мы принимаем только .mp3 и .wav.<br>Есть ещё кое-что, но это для чересчур одарённых, а они придут к этому сами.<br><i>Qui quaerit, reperit</i></p>
+      <div class="align-items-center text-center">
+        <form method='POST' class="align-items-center text-center" enctype='multipart/form-data'>
+          {{form.hidden_tag()}}
+          <div style="max-width: 40%; min-width: 16em;" class="mx-auto">
+            <div class="input-group mb-1 mx-auto">
+              <span class="input-group-text" style="font-size: 12px">Фамилия</span>
+              {{form.surname(class="form-control", style="font-size: 13px")}}
+            </div>
+            {{form.file(class="form-control mb-1 mx-auto", style="font-size: 12px" )}}
+            {% if args %}
+              <div class="alert alert-secondary bg-dark text-white mw-40" role="alert">{{args}}</div>
+            {% endif %}
+            {{form.submit(class="btn btn-success", style="min-width: 16em")}}
+          </div>
+        </form>
+      </div>
+    </main>
+</body>
+</html>
