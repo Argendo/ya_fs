@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY']='secsec'
 app.config['UPLOAD_FOLDER']='static/files'
 
-allowed_extensions = ['mp3', 'mp4', 'wav']
+allowed_extensions = ['mp3', 'wav', 'mp4', 'mov', 'pptx', 'docx', 'jpg', 'png']
 
 class UploadFileForm(FlaskForm):
     surname = StringField("Фамилия")
