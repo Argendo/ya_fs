@@ -20,9 +20,15 @@
     <link href="https://fonts.cdnfonts.com/css/futura-medium" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/snowstorm" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+    .g-recaptcha {
+      transform: scale(0.8);
+      display: inline-block;
+    }
+    </style>
 </head>
 
-<body class="d-flex bg-light text-white text-center" style="background-image: url('/static/back1.png'); background-position: center; background-repeat: no-repeat; height: 100vh; background-size: auto 130%;">
+<body class="d-flex bg-black text-white text-center" style="background-image: url('/static/back1.png'); background-position: top center; background-repeat: no-repeat; height: 100vh; background-size: auto 150%;">
   <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
@@ -52,13 +58,17 @@
           <div style="max-width: 40%; min-width: 16em;" class="mx-auto">
             <div class="input-group mb-2 mx-auto">
               <span class="input-group-text" style="font-size: 12px">Фамилия</span>
-              {{form.surname(class="form-control", style="font-size: 13px")}}
+              {{form.surname(class="form-control", style="font-size: 13px", type="text", id="lname")}}
             </div>
-            {{form.file(class="form-control mb-2 mx-auto", style="font-size: 12px" )}}
+            {{form.file(class="form-control mx-auto", style="font-size: 12px" )}}
             {% if args %}
-              <div class="alert alert-dark alert-dismissible fade show mw-40" role="alert" style="border-color: brown, background-color: brown">{{args}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+              <div class="alert alert-dark alert-dismissible fade show mw-40 mt-2" role="alert" style="border-color: brown, background-color: brown">{{args}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
             {% endif %}
-            <button id="btnSubmit" type="submit" class="btn btn-primary" style="min-width: 16em; background-color: brown; border-color: brown">Отправить файл</button>
+            <div class="d-flex justify-content-center">{{form.recaptcha}}</div>
+            {% for error in form.recaptcha.errors %}
+              <div class="alert alert-danger alert-dismissible fade show mw-40" role="alert" style="border-color: brown, background-color: brown">Пожалуйста, реши капчу, дай нам понять, что ты не робот.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+            {% endfor %}
+            <button id="btnSubmit" type="submit" class="btn btn-primary mx-auto" style="min-width: 16em; background-color: brown; border-color: brown">Отправить файл</button>
           </div>
         </form>
       </div>

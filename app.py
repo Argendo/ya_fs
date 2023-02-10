@@ -1,20 +1,26 @@
 from flask import Flask, render_template, url_for
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import FileField, SubmitField, StringField
 from wtforms.validators import data_required
 from werkzeug.utils import secure_filename
 import os, filetype, yadisk, time
 from private.config import token as TOKEN
+from private.config import sec_flask_key as SEC_FLASK_KEY
+from private.config import pub_captcha_key as PUB_CAP
+from private.config import sec_captcha_key as SEC_CAP
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='secsec'
-app.config['UPLOAD_FOLDER']='static/files'
+app.config['SECRET_KEY'] = SEC_FLASK_KEY
+app.config['UPLOAD_FOLDER'] = 'static/files'
+app.config['RECAPTCHA_PUBLIC_KEY'] = PUB_CAP
+app.config['RECAPTCHA_PRIVATE_KEY'] = SEC_CAP
 
-allowed_extensions = ['mp3', 'wav', 'mp4', 'mov', 'pptx', 'docx', 'jpg', 'png']
+allowed_extensions = ['mp3', 'wav', 'mp4', 'mov', 'pptx', 'docx', 'jpg', 'png', 'heic']
 
 class UploadFileForm(FlaskForm):
     surname = StringField("Фамилия")
     file = FileField("Выбрать файл", validators=[data_required()])
+    recaptcha = RecaptchaField()
     submit = SubmitField("Отправить файл")
 
 def allowed_file(filename):
