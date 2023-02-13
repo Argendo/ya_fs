@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Товарищ</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
@@ -20,6 +22,10 @@
     <link href="https://fonts.cdnfonts.com/css/futura-medium" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/snowstorm" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
     <style>
     .g-recaptcha {
       transform: scale(0.8);
@@ -51,7 +57,7 @@
     </header>
     <main class="px-3 align-items-center text-center mx-auto my-auto">
       <h1>Товарищ α* - в светлое завтра сегодня!</h1>
-      <p class="lead">Мы принимаем всё, что нужно для идеального мероприятия.<br>Есть ещё кое-что, но это для чересчур одарённых, а они придут к этому сами.<br><i>Qui quaerit, reperit</i></p>
+      <p class="lead">Мы принимаем <a href="#" style="text-decoration: none; color: brown;" data-bs-toggle="tooltip" data-bs-title=".mp3 .wav .mp4 .pptx .docx .jpg .png">всё</a>, что нужно для идеального мероприятия.<br>Есть ещё кое-что, но это для чересчур одарённых, а они придут к этому сами.<br><i>Qui quaerit, reperit</i></p>
       <div class="align-items-center text-center">
         <form id="formSubmit" method='POST' class="align-items-center text-center" enctype='multipart/form-data'>
           {{form.hidden_tag()}}
@@ -79,7 +85,7 @@
     <script>
 	$('form#formSubmit').submit(function() {
 		$('button#btnSubmit').attr('disabled', 'disabled');
-		$('button#btnSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Отправляем...');
+		$('button#btnSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Отправляем...');
 	});
 </script>
 </div>
