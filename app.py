@@ -15,7 +15,7 @@ app.config['UPLOAD_FOLDER'] = 'static/files'
 app.config['RECAPTCHA_PUBLIC_KEY'] = PUB_CAP
 app.config['RECAPTCHA_PRIVATE_KEY'] = SEC_CAP
 
-allowed_extensions = ['mp3', 'wav', 'mp4', 'pptx', 'docx', 'jpg', 'png', 'heic']
+allowed_extensions = ['mp3', 'wav', 'flac', 'mp4', 'pptx', 'docx', 'jpg', 'png', 'heic']
 
 class UploadFileForm(FlaskForm):
     surname = StringField("Фамилия")
